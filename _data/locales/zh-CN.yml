@@ -31,9 +31,9 @@ copyright:
   # Shown at the bottom of the post
   license:
     # Individual posts may state their own license in the content.
-    template:
-    name:
-    link:
+    template: ""
+    name: ""
+    link: ""
 
   # Displayed in the footer
   brief: ""
