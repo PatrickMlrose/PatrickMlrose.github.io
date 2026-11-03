@@ -9,6 +9,7 @@ layout:
 
 # The tabs of sidebar
 tabs:
+  openclash: OpenClash 手册
   # format: <filename_without_extension>: <value>
   home: 首页
   categories: 分类

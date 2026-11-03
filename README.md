@@ -63,3 +63,11 @@ bundle exec jekyll serve
 - Chirpy Starter 来源：https://github.com/cotes2020/chirpy-starter
 - 模板提交：`beffc88713242da8bf49325674be38d171071213`。
 - 保留上游 LICENSE；使用本仓库时请区分模板代码与作者文章的权利。
+
+## OpenClash 手册
+
+完整交互手册位于 `/handbook/openclash/`，侧栏入口为 `/openclash/`，导读文章位于 `/posts/openclash-handbook/`。
+
+发布来源：[PatrickMlrose/openclash-handbook](https://github.com/PatrickMlrose/openclash-handbook)，本次快照提交 `e09e1488b5761eeeb36d63e540395e53f37af129`。原书来源、许可与改写说明保存在手册的下载目录中。
+
+更新时先在手册源码仓库运行 `npm ci && npm run prepare:pages`，检查后将 `docs/` 下文件同步到本仓库 `handbook/openclash/`（无需复制 `.nojekyll`）。保留下载目录中的 `ATTRIBUTION.md` 和入口 HTML 的 canonical 链接；同步更新导读文章和章节数量，再提交 main。手册独立于博客主题渲染，由原有 GitHub Actions 一同发布。
