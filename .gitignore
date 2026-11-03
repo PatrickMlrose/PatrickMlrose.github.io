@@ -14,6 +14,8 @@ _site
 # NPM dependencies
 node_modules
 package-lock.json
+!tools/editor/package-lock.json
+admin/app/
 
 # IDE configurations
 .idea

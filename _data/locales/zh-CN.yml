@@ -9,6 +9,7 @@ layout:
 
 # The tabs of sidebar
 tabs:
+  admin: 写文章
   openclash: OpenClash 手册
   # format: <filename_without_extension>: <value>
   home: 首页

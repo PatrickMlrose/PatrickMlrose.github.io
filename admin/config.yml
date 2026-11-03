@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: PatrickMlrose/PatrickMlrose.github.io
+  branch: main
+  auth_methods: [token]
+
+site_url: https://patrickmlrose.github.io
+display_url: https://patrickmlrose.github.io
+app_title: PatrickMlrose 的博客 · 写作后台
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    folder: _posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - name: date
+        label: 发布时间（上海）
+        widget: datetime
+        default: "{{now}}"
+        input_timezone: Asia/Shanghai
+        format: "YYYY-MM-DD HH:mm:ss ZZ"
+      - { name: description, label: 摘要, widget: text, required: false }
+      - { name: categories, label: 分类, widget: list, required: false, hint: "例如：技术实践、网络工具。多个分类按层级排列。" }
+      - { name: tags, label: 标签, widget: list, required: false }
+      - { name: image, label: 封面图片, widget: image, required: false }
+      - { name: body, label: 正文, widget: markdown }
+      - { name: published, label: 在博客上公开, widget: boolean, default: true, hint: "关闭后保存为未展示文章。仓库是公开的，源文件仍可查看。" }
+      - { name: pin, label: 首页置顶, widget: boolean, required: false, default: false }
+      - { name: toc, label: 显示目录, widget: boolean, required: false, default: true }
+      - { name: comments, label: 允许评论（需站点启用评论服务）, widget: boolean, required: false, default: false }
+      - { name: permalink, label: 原固定链接, widget: hidden, required: false }

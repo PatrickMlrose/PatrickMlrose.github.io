@@ -45,6 +45,19 @@ jobs:
           ruby-version: 3.4
           bundler-cache: true
 
+      - name: Set up Node for the on-site editor
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: tools/editor/package-lock.json
+
+      - name: Build the on-site editor
+        working-directory: tools/editor
+        run: |
+          npm ci --no-fund --no-audit
+          npm run build
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
@@ -52,6 +65,12 @@ jobs:
 
       - name: Test site
         run: |
+          test -s _site/admin/index.html
+          grep -Fq '/admin/app/editor.js' _site/admin/index.html
+          grep -Fq '/admin/' _site/index.html
+          cmp admin/config.yml _site/admin/config.yml
+          test -s _site/admin/help/index.html
+          diff -qr admin/app _site/admin/app
           bundle exec htmlproofer _site \
             \-\-disable-external \
             \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"

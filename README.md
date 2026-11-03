@@ -4,6 +4,12 @@
 
 基于 Jekyll / Chirpy，使用 GitHub Actions 构建并发布到 GitHub Pages。
 
+## 在博客内写文章
+
+侧栏点击 **写文章** 即可打开 [站内编辑器](https://patrickmlrose.github.io/admin/)。使用仅限本仓库、具有 Contents 读写权限的细粒度令牌登录；无需额外的认证服务器。[首次登录、传图和发布说明](https://patrickmlrose.github.io/admin/help/)。
+
+编辑器管理 `_posts/` 和 `assets/uploads/`；保存直接提交到 `main`，沿用同一条 Pages 工作流。前端依赖锁定在 `tools/editor/package-lock.json`，部署时构建到本站，不在页面中加载远程 CMS 脚本。
+
 ## 在 GitHub 网页发布文章
 
 1. 打开仓库，选择 Add file → Create new file。
@@ -47,10 +53,12 @@ description: "文章简介。"
 
 ## 本地预览（可选）
 
-需要 Ruby 3.4、Bundler 和 Git。无需本地环境也能通过 GitHub 网页写作。
+需要 Ruby 3.4、Bundler、Git 和 Node.js 24。无需本地环境也能在站内编辑器或 GitHub 网页写作。
 
 ```sh
 git submodule update --init --recursive
+npm ci --prefix tools/editor
+npm run build --prefix tools/editor
 bundle install
 bundle exec jekyll serve
 ```
