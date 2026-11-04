@@ -13,13 +13,26 @@ sitemap: false
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' blob: data: https://api.github.com https://*.githubusercontent.com https://github.com https://uploads.github.com; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' blob: data: https://api.github.com https://*.githubusercontent.com https://github.com https://uploads.github.com; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
     <title>写文章 · PatrickMlrose 的博客</title>
+    <link rel="stylesheet" href="/admin/studio.css">
     <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml">
     <script type="module" src="/admin/app/editor.js"></script>
   </head>
   <body>
-    <p id="editor-status" role="status">正在打开写作后台… <a href="/admin/help/">首次登录与写作说明</a></p>
+    <header class="studio-bar">
+      <div class="studio-brand">
+        <img src="/assets/art/notebook-mark.svg" alt="" width="32" height="32">
+        <strong>写作室</strong><span>PatrickMlrose / Field Notes</span>
+      </div>
+      <nav aria-label="写作室导航">
+        <a href="/" target="_blank" rel="noopener">查看博客 <span aria-hidden="true">↗</span></a>
+        <a href="/admin/help/" target="_blank" rel="noopener">使用说明</a>
+      </nav>
+    </header>
+    <div id="nc-root">
+      <p id="editor-status" role="status">正在打开写作后台… <a href="/admin/help/">首次登录与写作说明</a></p>
+    </div>
     <noscript>请启用 JavaScript 以使用站内编辑器。</noscript>
   </body>
 </html>

@@ -1,0 +1,103 @@
+/* Field notebook palette. Chirpy continues to control the selected colour mode. */
+html, html[data-bs-theme="light"] {
+  --paper: #faf9f5;
+  --ink: #1c332c;
+  --muted-ink: #53665d;
+  --rule: #d5dbd0;
+  --wash: #ecf0e7;
+  --rust: #97502d;
+  --rail: #efefe7;
+  --serif: "Iowan Old Style", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, Georgia, serif;
+}
+html[data-bs-theme="dark"] {
+  --paper: #171e1b;
+  --ink: #e0e8da;
+  --muted-ink: #a6b7aa;
+  --rule: #39473e;
+  --wash: #29372e;
+  --rust: #e3a37a;
+  --rail: #1c2620;
+}
+html:root, html:root[data-bs-theme] {
+  --main-bg: var(--paper);
+  --heading-color: var(--ink);
+  --text-color: var(--ink);
+  --text-muted-color: var(--muted-ink);
+  --link-color: var(--ink);
+  --link-underline-color: var(--muted-ink);
+  --main-border-color: var(--rule);
+  --sidebar-bg: var(--rail);
+  --sidebar-border-color: var(--rule);
+  --sidebar-muted-color: var(--muted-ink);
+  --sidebar-active-color: var(--ink);
+  --sidebar-hover-bg: var(--wash);
+  --topbar-bg: var(--paper);
+}
+body { background: var(--paper); }
+#sidebar .site-title { color: var(--ink); font-family: var(--serif); font-size: 1.48rem; }
+#sidebar .site-subtitle { color: var(--muted-ink); font-size: .84rem; font-style: normal !important; letter-spacing: .06em; }
+#sidebar ul li.nav-item.active .nav-link { background: var(--ink); color: var(--paper); }
+#sidebar ul li.nav-item.active .nav-link i { color: inherit; }
+#sidebar #avatar { box-shadow: 0 0 0 3px var(--rail), 0 0 0 4px var(--rule); }
+#topbar-wrapper { border-bottom: 1px solid var(--rule); }
+main:has(.journal-home) { width: 100%; max-width: 100%; }
+#main-wrapper:has(.journal-home) #panel-wrapper { display: none; }
+#main-wrapper:has(.journal-home) #tail-wrapper { width: 100%; }
+.journal-home { margin: 1.6rem auto 2.5rem; max-width: 66rem; color: var(--ink); }
+.journal-cover { position: relative; isolation: isolate; overflow: hidden; border-radius: 3px; background: #1b3832; color: #f8f3e2; }
+.cover-copy { position: relative; z-index: 1; width: 54%; padding: clamp(1.7rem, 4vw, 3.7rem); padding-right: 0; }
+.field-label { display: flex; align-items: center; gap: .65rem; margin: 0; font: 600 .67rem/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .15em; text-transform: uppercase; }
+.field-label > span { width: 1.55rem; height: 1px; background: currentColor; }
+.cover-copy .field-label { color: #dfbd96; }
+.cover-copy h1 { margin: 1rem 0 .7rem; font: 600 clamp(2.75rem,5vw,4.7rem)/1.15 var(--serif); letter-spacing: -.065em; color: #f8f3e2; }
+.cover-copy h1 span { color: #e5b080; }
+.cover-description { font-size: clamp(.94rem,1.6vw,1.1rem); letter-spacing: .07em; color: #d5dfcf; margin: 0; }
+.cover-copy nav { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.25rem; margin-top: 1.6rem; }
+.cover-copy nav a { display: inline-flex; align-items: center; gap: .8rem; min-height: 42px; border: 0; font-size: .86rem; font-weight: 600; text-decoration: none; }
+.cover-copy .cover-primary { padding: .5rem .95rem; color: #19382f; background: #e9d8b0; border-radius: 3px; }
+.cover-copy .cover-secondary { color: #f4ecda; }
+.cover-copy nav a:hover { text-decoration: underline; text-underline-offset: .23em; }
+.cover-plate { position: absolute; z-index: 0; inset: 0 0 0 44%; background: url('../art/ridgeline.svg') right center / cover no-repeat; }
+.cover-plate::before { content: ""; position: absolute; inset: 0; width: 26%; background: linear-gradient(90deg,#1b3832,transparent); }
+.cover-plate > span { position: absolute; bottom: .8rem; right: 1.25rem; color: #b8c7b6; font: .6rem/1.2 ui-monospace,monospace; letter-spacing: .16em; }
+#journal-index { scroll-margin-top: 4.5rem; }
+.index-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin: 2.65rem 0 0; padding-bottom: 1.1rem; border-bottom: 2px solid var(--ink); }
+.index-heading .field-label, .entry-pin { color: var(--rust); }
+.index-heading h2 { margin: .4rem 0 0; color: var(--ink); font: 600 clamp(1.65rem,3vw,2.1rem)/1.25 var(--serif); }
+.index-heading > a { color: var(--muted-ink); font-size: .84rem; text-decoration: none; }
+.index-heading > a:hover { color: var(--ink); text-decoration: underline; }
+.journal-entry { border-bottom: 1px solid var(--rule); }
+.journal-entry .entry-link { display: flex; align-items: center; gap: clamp(.9rem,2.5vw,2rem); color: var(--ink); text-decoration: none; padding: 1.4rem .45rem; }
+.entry-link:hover, .entry-link:focus-visible { background: var(--wash); }
+.entry-date { align-self: flex-start; min-width: 4rem; padding-top: .12rem; display: grid; gap: .3rem; color: var(--muted-ink); font: .7rem/1.25 ui-monospace,Menlo,monospace; letter-spacing: .04em; }
+.entry-date > span { font-size: 1.05rem; color: var(--ink); }
+.entry-copy { flex: 1; min-width: 0; }
+.entry-meta { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; color: var(--muted-ink); font-size: .75rem; font-weight: 600; }
+.entry-pin i { font-size: .65rem; }
+.entry-copy h3 { margin: .3rem 0 .45rem; color: var(--ink); font: 600 clamp(1.2rem,2vw,1.55rem)/1.4 var(--serif); overflow-wrap: anywhere; }
+.entry-copy > p { margin: 0; color: var(--muted-ink); font-size: .91rem; line-height: 1.65; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.entry-thumb { width: clamp(4.7rem,12vw,8rem); aspect-ratio: 1.55; flex: none; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.entry-thumb img, .entry-thumb .preview-img, .entry-thumb .shimmer { width: 100%; height: 100%; object-fit: cover; display: block; margin: 0; }
+.entry-arrow { color: var(--muted-ink); font: 1.1rem Georgia,serif; }
+.journal-home a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+main article[data-toc] > header { padding-top: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+main article[data-toc] > header h1 { font: 600 clamp(1.95rem,3.6vw,3rem)/1.28 var(--serif); color: var(--ink); overflow-wrap: anywhere; }
+main article[data-toc] .content { font-size: 1.04rem; line-height: 1.9; }
+main article[data-toc] .content :is(h2,h3) { font-family: var(--serif); line-height: 1.45; color: var(--ink); }
+main article[data-toc] .content h2 { border-bottom: 1px solid var(--rule); padding-bottom: .35em; }
+main article[data-toc] .content blockquote { border-left-color: var(--rust); }
+@media (max-width: 600px) {
+  .journal-home { margin-top: .85rem; }
+  .cover-copy { width: 100%; padding: 1.5rem 1.15rem 1.4rem; }
+  .cover-plate { inset: 0 -18% 0 28%; opacity: .55; }
+  .cover-plate::before { width: 45%; }
+  .cover-plate > span { display: none; }
+  .cover-copy h1 { font-size: 2.85rem; }
+  .cover-copy nav { margin-top: 1.1rem; }
+  .index-heading { margin-top: 1.9rem; }
+  .journal-entry .entry-link { gap: .65rem; padding: 1rem .1rem; }
+  .entry-date { min-width: 2.65rem; font-size: .63rem; }
+  .entry-date > span { font-size: .83rem; }
+  .entry-thumb { width: 3.8rem; aspect-ratio: 1; }
+  .entry-arrow { display: none; }
+}

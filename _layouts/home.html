@@ -1,0 +1,58 @@
+---
+layout: default
+---
+{% assign visible_posts = site.posts | where_exp: 'post', 'post.hidden != true' %}
+{% assign pinned = visible_posts | where: 'pin', true %}
+{% assign regular = visible_posts | where_exp: 'post', 'post.pin != true' %}
+{% assign ordered = pinned | concat: regular %}
+{% assign per_page = paginator.per_page | default: site.paginate %}
+{% assign current = paginator.page | default: 1 %}
+{% assign offset = current | minus: 1 | times: per_page %}
+
+<div class="journal-home">
+  {% if current == 1 %}
+  <header class="journal-cover">
+    <div class="cover-copy">
+      <p class="field-label"><span></span> PatrickMlrose / Field Notes</p>
+      <h1>个人手记<span aria-hidden="true">。</span></h1>
+      <p class="cover-description">{{ site.tagline | escape }}</p>
+      <nav aria-label="首页快捷导航">
+        <a class="cover-primary" href="#journal-index">浏览文章 <span aria-hidden="true">↓</span></a>
+        <a class="cover-secondary" href="{{ '/about/' | relative_url }}">关于作者 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+    <div class="cover-plate" aria-hidden="true"><span>FIG. 01 &nbsp; / &nbsp; 山脊</span></div>
+  </header>
+  {% endif %}
+
+  <section id="journal-index" aria-labelledby="journal-index-title">
+    <header class="index-heading">
+      <div><p class="field-label"><span></span> The Index</p><h2 id="journal-index-title">文章索引</h2></div>
+      <a href="{{ '/archives/' | relative_url }}">查看归档 <span aria-hidden="true">↗</span></a>
+    </header>
+    {% for post in ordered offset: offset limit: per_page %}
+    <article class="journal-entry">
+      <a class="entry-link" href="{{ post.url | relative_url }}">
+        <time class="entry-date" datetime="{{ post.date | date_to_xmlschema }}"><span>{{ post.date | date: '%m.%d' }}</span>{{ post.date | date: '%Y' }}</time>
+        <div class="entry-copy">
+          <div class="entry-meta">
+            {% if post.pin %}<span class="entry-pin"><i class="fas fa-thumbtack" aria-hidden="true"></i> 置顶</span>{% endif %}
+            <span>{{ post.categories | first | default: '手记' | escape }}</span>
+          </div>
+          <h3>{{ post.title | escape }}</h3>
+          <p>{% include post-summary.html max_length=95 %}</p>
+        </div>
+        {% if post.image %}
+          {% assign cover = post.image.path | default: post.image %}
+          {% capture cover_url %}{% include media-url.html src=cover subpath=post.media_subpath %}{% endcapture %}
+          <div class="entry-thumb"><img src="{{ cover_url | strip | escape }}" alt="{{ post.image.alt | default: '' | escape }}" loading="lazy"></div>
+        {% endif %}
+        <span class="entry-arrow" aria-hidden="true">↗</span>
+      </a>
+    </article>
+    {% else %}
+    <p>本页暂无文章。</p>
+    {% endfor %}
+    {% if paginator.total_pages > 1 %}{% include lang.html %}{% include post-paginator.html %}{% endif %}
+  </section>
+</div>

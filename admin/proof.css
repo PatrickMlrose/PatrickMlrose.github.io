@@ -1,0 +1,21 @@
+.proof-page {
+  box-sizing: border-box;
+  margin: 1rem auto;
+  max-width: 48rem;
+  padding: clamp(1rem, 4%, 3rem);
+  font-family: system-ui, sans-serif;
+  line-height: 1.85;
+  color: var(--sui-primary-foreground-color, CanvasText);
+  overflow-wrap: anywhere;
+}
+.proof-page > header { border-bottom: 1px solid color-mix(in srgb, currentColor 30%, transparent); padding-bottom: .75rem; }
+.proof-kicker { display: flex; gap: .65rem; align-items: center; }
+.proof-kicker::before { content: ""; width: 1.6rem; height: 2px; background: #b88460; }
+.proof-kicker, .proof-meta { font: .72rem/1.6 ui-monospace, Menlo, monospace; letter-spacing: .08em; }
+.proof-page h1, .proof-body :is(h2,h3) { font-family: "Songti SC","Noto Serif CJK SC",SimSun,Georgia,serif; line-height: 1.4; }
+.proof-page h1 { margin: .8rem 0 .4rem; font-size: clamp(1.8rem, 5vw, 2.65rem); }
+.proof-deck { margin: .4rem 0; }
+.proof-body { padding-top: 1rem; }
+.proof-cover, .proof-body img { display: block; max-width: 100%; height: auto; margin-block: .8rem; }
+.proof-body pre, .proof-body table { display: block; max-width: 100%; overflow: auto; }
+.proof-body blockquote { margin-inline: 0; padding-inline-start: 1rem; border-inline-start: 3px solid #b88460; }
