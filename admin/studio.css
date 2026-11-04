@@ -31,6 +31,7 @@ body { margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: 
 }
 @media(max-width: 600px) {
   .studio-bar { min-height: 44px; }
+  .studio-bar nav { gap: .6rem; }
   .studio-brand > span { display: none; }
   .studio-brand img { width: 26px; height: 26px; }
   #nc-root .container:has(> .inner > .logo) { padding: 1rem; }
